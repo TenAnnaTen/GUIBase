@@ -48,11 +48,20 @@ public class MainWindow extends JFrame{
         else s = "неопределен";
         return s;
     }
+    private String Color(){
+        String s;
+        if(check.isSelected()) s = check.getText();
+        else s = comboBox2.getSelectedItem().toString();
+        return s;
+    }
     private class MyButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             Formatter formatter = new Formatter();
-            formatter.format("ФИО хозяина: %s\nВозраст хозяина: %d\nПол: %s\nНомер телефона: %s", textField1.getText(), spinner1.getValue(), M_ZH(), formattedTextField1.getText());
+            formatter.format("ФИО: %s\nВозраст: %d\nПол: %s\nНомер телефона: %s\nПочта: %s\n\nКличка: %s\nВид: %s\n" +
+                    "Рост: %d\nЦвет: %s\nЛюбимые игрушки: %s", textField1.getText(), spinner1.getValue(), M_ZH(),
+                    formattedTextField1.getText(), textField2.getText(), textField3.getText(),
+                    comboBox1.getSelectedItem(), slider1.getValue(), Color(), list1.getSelectedValue());
             JOptionPane.showMessageDialog(MainWindow.this, formatter);
             System.exit(0);
         }
